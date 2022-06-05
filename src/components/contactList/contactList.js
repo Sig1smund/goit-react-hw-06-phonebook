@@ -1,11 +1,35 @@
-import propTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeContact } from 'redux/contactsSlice';
 import s from './contactList.module.css';
 
-export default function ContactList({ children }) {
-  const list = <ul className={s.list__block}>{children}</ul>;
-  return list;
-}
+export default function ContactList() {
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.filter.value);
+  const contacts = useSelector(state => state.contacts.elements);
 
-ContactList.propTypes = {
-  children: propTypes.node,
-};
+  const filteredItems = () => {
+    const loweredFilter = filter.toLowerCase();
+    const filtered = contacts.filter(elem =>
+      elem.name.toLowerCase().includes(loweredFilter)
+    );
+    return filtered;
+  };
+
+  return (
+    <ul className={s.list__block}>
+      {filteredItems().map(elem => {
+        return (
+          <li key={elem.number} className={s.contacts__item}>
+            {elem.name}: {elem.number}
+            <button
+              type="button"
+              onClick={() => dispatch(removeContact(elem.number))}
+            >
+              Delete
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}

@@ -1,7 +1,7 @@
 import ContactForm from "./contactForm";
 import Filter from "./filter";
 import ContactList from "./contactList";
-import ContactsItem from "./contactItem";
+// import ContactsItem from "./contactItem";
 import s from './contactForm/contactForm.module.css'
 
 export default function App() {
@@ -12,9 +12,7 @@ export default function App() {
         <ContactForm/>
         <h2>Contacts</h2>
         <Filter/>
-        <ContactList>
-          <ContactsItem />
-        </ContactList>
+        <ContactList/>
       </div>
     )
 }
