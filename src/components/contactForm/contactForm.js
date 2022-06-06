@@ -3,6 +3,7 @@ import { isEqual } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './contactForm.module.css';
 import { addContact } from 'redux/contactsSlice';
+import { nanoid } from '@reduxjs/toolkit';
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -31,7 +32,7 @@ function ContactForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newContact = { id: number, name: name, number: number };
+    const newContact = { id: nanoid(), name: name, number: number };
 
     const test = contacts.some(user => isEqual(newContact.number, user.number));
     !test

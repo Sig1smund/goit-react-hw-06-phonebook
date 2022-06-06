@@ -19,11 +19,11 @@ export default function ContactList() {
     <ul className={s.list__block}>
       {filteredItems().map(elem => {
         return (
-          <li key={elem.number} className={s.contacts__item}>
+          <li key={elem.id} className={s.contacts__item}>
             {elem.name}: {elem.number}
             <button
               type="button"
-              onClick={() => dispatch(removeContact(elem.number))}
+              onClick={() => dispatch(removeContact(elem.id))}
             >
               Delete
             </button>
