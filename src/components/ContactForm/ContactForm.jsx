@@ -1,6 +1,5 @@
 import { useReducer } from 'react';
 import { isEqual } from 'lodash';
-import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
@@ -32,7 +31,8 @@ function reducer(state, action) {
       return state;
   }
 };
-function ContactForm() {
+
+export default function ContactForm() {
   const [state, dispatchAction] = useReducer(reducer, initialState);
   const dispatch = useDispatch()
   const contacts = useSelector(state => state.contacts.elements);
@@ -94,10 +94,4 @@ function ContactForm() {
       <button type="submit" className={s.button}>Add contact</button>
     </form>
   );
-}
-
-export default ContactForm;
-
-ContactForm.propTypes = {
-  data: propTypes.func,
 };

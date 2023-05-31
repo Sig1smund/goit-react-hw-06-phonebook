@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { input } from 'redux/filterSlice';
 import s from './filter.module.css';
-import propTypes from 'prop-types';
 
 export default function Filter() {
   const filter = useSelector(state => state.filter.value);
@@ -26,9 +25,4 @@ export default function Filter() {
       />
     </label>
   );
-}
-
-Filter.propTypes = {
-  eventHandler: propTypes.func,
-  options: propTypes.string,
 };

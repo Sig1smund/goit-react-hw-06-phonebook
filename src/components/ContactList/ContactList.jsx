@@ -1,4 +1,3 @@
-import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact } from 'redux/contactsSlice';
 import s from './contactList.module.css';
@@ -30,8 +29,4 @@ export default function ContactList() {
   })}
   </ul>;
   return list;
-}
-
-ContactList.propTypes = {
-  children: propTypes.node,
 };
